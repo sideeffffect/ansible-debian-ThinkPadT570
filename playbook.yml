@@ -1,0 +1,267 @@
+---
+
+- hosts: debian-thinkpadw500
+
+  vars:
+    firefox:
+      addons:
+        - url: https://addons.mozilla.org/en-US/firefox/addon/https-everywhere
+        - url: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin
+        - url: https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab
+        - url: https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix
+        - url: https://addons.mozilla.org/en-US/firefox/addon/firegestures
+        - url: https://addons.mozilla.org/en-US/firefox/addon/stylish
+        - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
+        - url: https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
+        - url: https://addons.mozilla.org/en-US/firefox/addon/arc-dark-theme
+        - url: https://addons.mozilla.org/en-US/firefox/addon/gnotifier
+        - url: https://addons.mozilla.org/en-US/firefox/addon/h264ify
+      prefs:
+        - name: browser.tabs.animate
+          value: false
+        - name: browser.startup.page
+          value: 3
+        - name: extensions.treestyletab.autoCollapseExpandSubtreeOnAttach
+          value: false
+        - name: extensions.treestyletab.tooltip.mode
+          value: 0
+        - name: accessibility.typeaheadfind
+          value: true
+        - name: browser.sessionstore.restore_on_demand
+          value: false
+        - name: extensions.tabmix.currentTab
+          value: true
+      styles:
+        - https://userstyles.org/styles/92693/dark-hacker-news-solarized
+        - https://userstyles.org/styles/118959/darksearch-for-google
+        - https://userstyles.org/styles/37035/github-dark
+        - https://userstyles.org/styles/108591/github-wide
+        - https://userstyles.org/styles/123908/reddit-slate-nights-fixed-custom-fork-dark
+        - https://userstyles.org/styles/130610/youtube-umbra
+        - https://userstyles.org/styles/122072/wikipedia-minimalistic-dark-material-design
+        - https://userstyles.org/styles/105609/userstyles-dark-aperopia
+        - https://userstyles.org/styles/25811/amo-dark-theme
+        - https://userstyles.org/styles/35345/stackoverflow-dark
+        - https://userstyles.org/styles/120595/gmail-dark-1
+    
+    packages_add:
+      - ansible
+      - apt-transport-https
+      - aptitude
+      - ca-certificates
+      - curl
+      - dconf-editor
+      - deluge-console
+      - deluge-gtk
+      - firmware-iwlwifi
+      - firmware-linux
+      - fish
+      - flatpak
+      - git
+      - gitg
+      - gnome-shell-extension-move-clock
+      - gnome-shell-extension-redshift
+      - gnome-shell-extension-system-monitor
+      - gnome-shell-extension-weather
+      - gnome-tweak-tool
+      - gtk2-engines-murrine
+      - guake
+      - libcanberra-gtk-module
+      - libpam-fprintd
+      - libxml2-utils
+      - liferea
+      - mono-complete
+      - openjdk-8-jdk
+      - openjfx
+      - plymouth
+      - plymouth-themes
+      - python-jsonpath-rw
+      - python-pip
+      - sudo
+      - vim
+    packages_repos:
+      - repo: deb http://httpredir.debian.org/debian testing main contrib non-free
+      - repo: deb http://httpredir.debian.org/debian testing-updates main contrib non-free
+      - repo: deb http://security.debian.org/ testing/updates main contrib non-free
+      - repo: deb-src http://httpredir.debian.org/debian testing main contrib non-free
+      - repo: deb-src http://httpredir.debian.org/debian testing-updates main contrib non-free
+      - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
+  
+  pre_tasks:
+    - name: Download AnotherCountrySunset wallpaper
+      get_url:
+        url: http://ftp.gnome.org/pub/GNOME/teams/art.gnome.org/backgrounds/NATURE-AnotherCountrySunset_1920x1200.jpg
+        dest: '~/Pictures/NATURE-AnotherCountrySunset_1920x1200.jpg'
+    
+    - name: Fonts -- Fira Code -- download
+      get_url:
+        url: https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-{{ item }}.ttf?raw=true
+        dest: '~/.local/share/fonts/FiraCode-{{ item }}.ttf'
+      with_items:
+        - Bold
+        - Light
+        - Medium
+        - Regular
+        - Retina
+
+    - name: gconf
+      command: gconftool-2 -s {{ item.key }} {{ item.value }} -t {{ item.type }}
+      with_items:
+        - { key: /apps/guake/keybindings/global/show_hide, value: "<Shift>space", type: string }
+
+    - name: gsettings
+      command: gsettings set {{ item }}
+      with_items:
+        - net.sf.liferea default-view-mode 1
+        - net.sf.liferea disable-toolbar true
+        - net.sf.liferea.plugins active-plugins "['media-player', 'libnotify', 'gnome-keyring']"
+        
+        - org.freedesktop.Tracker.Extract sched-idle 'always'
+        - org.freedesktop.Tracker.Miner.Files sched-idle 'always'
+        
+        - org.gnome.Terminal.Legacy.Settings new-terminal-mode 'tab'
+        
+        - org.gnome.desktop.background picture-uri '~/Pictures/NATURE-AnotherCountrySunset_1920x1200.jpg'
+        - org.gnome.desktop.datetime automatic-timezone true
+        - org.gnome.desktop.interface clock-show-date true
+        - org.gnome.desktop.interface clock-show-seconds true
+        - org.gnome.desktop.interface document-font-name 'DejaVu Sans 12'
+        - org.gnome.desktop.interface font-name 'DejaVu Sans 12'
+        - org.gnome.desktop.interface monospace-font-name 'Fira Code Light 12'
+        - org.gnome.desktop.wm.preferences titlebar-font 'DejaVu Sans Bold 12'
+        
+        - org.gnome.gedit.preferences.editor auto-indent true
+        - org.gnome.gedit.preferences.editor bracket-matching true
+        - org.gnome.gedit.preferences.editor display-line-numbers true
+        - org.gnome.gedit.preferences.editor display-overview-map true
+        - org.gnome.gedit.preferences.editor display-right-margin true
+        - org.gnome.gedit.preferences.editor highlight-current-line true
+        - org.gnome.gedit.preferences.editor insert-spaces true
+        - org.gnome.gedit.preferences.editor scheme 'oblivion'
+        - org.gnome.gedit.preferences.editor tabs-size 2
+        - org.gnome.gedit.preferences.ui show-tabs-mode 'auto'
+        
+        - org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
+        - org.gnome.settings-daemon.plugins.xsettings hinting 'full'
+        
+        - org.gnome.shell enabled-extensions "['redshift@tommie-lie.de', 'Move_Clock@jonathan.bluemosh.com', 'openweather-extension@jenslody.de', 'system-monitor@paradoxxx.zero.gmail.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com']"
+        - org.gnome.shell favorite-apps "['firefox-esr.desktop', 'google-chrome.desktop', 'evolution.desktop', 'empathy.desktop', 'liferea.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop']"
+        - org.gnome.shell.app-switcher current-workspace-only true
+        
+        - org.gnome.shell.extensions.auto-move-windows application-list "['firefox-esr.desktop:1', 'google-chrome.desktop:1', 'evolution.desktop:2', 'empathy.desktop:2', 'liferea.desktop:3', 'rhythmbox.desktop:4']"
+        
+        - org.gnome.shell.extensions.openweather city '50.0596288,14.446459273258>Praha, Česko >-1'
+        - org.gnome.shell.extensions.openweather position-in-panel 'right'
+        - org.gnome.shell.extensions.openweather pressure-unit 'kPa'
+        - org.gnome.shell.extensions.openweather unit 'celsius'
+        - org.gnome.shell.extensions.openweather wind-speed-unit 'm/s'
+        
+        - org.gtk.Settings.FileChooser sort-directories-first true
+    
+    - name: Fonts -- lcdfilter
+      lineinfile:
+        dest: ~/.Xresources
+        regexp: "^Xft.lcdfilter:"
+        line: "Xft.lcdfilter: lcddefault"
+        create: yes
+    
+    - name: Global GTK+ dark theme
+      ini_file:
+        dest: ~/.config/gtk-3.0/settings.ini
+        section: Settings
+        option: gtk-application-prefer-dark-theme
+        value: 1
+  
+  post_tasks:
+    - name: dpath -- install with pip (Python) # to enable json module (from jpnewman.json)
+      become: yes
+      command: pip install dpath
+      args:
+        creates: /usr/local/lib/python2.7/dist-packages/dpath
+    
+    - name: Autostart applications
+      copy:
+        src: /usr/share/applications/{{ item }}.desktop
+        dest: ~/.config/autostart/
+      with_items:
+        - empathy
+        - evolution
+        - firefox-esr
+        - google-chrome
+        - guake
+        - liferea
+        - rhythmbox
+    
+    - name: Fish -- default shell
+      become: yes
+      command: chsh -s /usr/bin/fish
+    
+    - name: Fish -- oh-my-fish -- install
+      shell: curl -L http://get.oh-my.fish > /tmp/install ; fish /tmp/install --noninteractive --yes
+      args:
+        creates: ~/.config/fish/conf.d/omf.fish
+    
+    - name: Fish -- oh-my-fish -- theme bundle
+      lineinfile:
+        line: theme bobthefish
+        dest: ~/.config/omf/bundle
+        create: yes
+    
+    - name: Fish -- oh-my-fish -- theme
+      copy:
+        content: bobthefish
+        dest: ~/.config/omf/theme
+    
+    - name: GRUB -- widescreen
+      become: yes
+      lineinfile:
+        dest: /etc/default/grub
+        regexp: '^GRUB_GFXMODE='
+        insertafter: '^#GRUB_GFXMODE='
+        line: 'GRUB_GFXMODE=1920x1200x32'
+      register: grubconfigwidescreen
+    
+    - name: Plymouth -- modesetting kernel modules -- drm
+      become: yes
+      lineinfile:
+        dest: /etc/initramfs-tools/modules
+        line: drm
+      register: kernelmodulesdrm
+    
+    - name: Plymouth -- modesetting kernel modules -- radeon
+      become: yes
+      lineinfile:
+        dest: /etc/initramfs-tools/modules
+        regexp: '^radeon '
+        line: 'radeon modeset=1'
+      register: kernelmodulesradeon
+    
+    - name: Plymouth -- GRUB config
+      become: yes
+      lineinfile:
+        dest: /etc/default/grub
+        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+        line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash irqpoll"'
+      register: grubconfigplymouth
+    
+    - name: Plymouth -- set theme
+      become: yes
+      command: plymouth-set-default-theme -R lines
+      when: kernelmodulesdrm.changed or kernelmodulesradeon.changed
+    
+    - name: GRUB -- update
+      become: yes
+      command: update-grub2
+      when: grubconfigwidescreen.changed or grubconfigplymouth.changed
+  
+  roles:
+    - name: zerotao.packages
+      become: yes
+    
+    - name: cmprescott.chrome
+      become: yes
+    
+    - alzadude.firefox
+    
+    - jpnewman.json
+
