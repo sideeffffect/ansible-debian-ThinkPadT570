@@ -65,6 +65,7 @@
       - firmware-linux
       - fish
       - flatpak
+      - fsharp
       - git
       - gitg
       - gnome-shell-extension-move-clock
