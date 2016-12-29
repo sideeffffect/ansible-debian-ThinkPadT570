@@ -55,9 +55,7 @@
     
     packages_add:
       - ansible
-      - apt-transport-https
       - aptitude
-      - ca-certificates
       - curl
       - dconf-editor
       - deluge-console
@@ -74,6 +72,7 @@
       - gnome-shell-extension-system-monitor
       - gnome-shell-extension-weather
       - gnome-tweak-tool
+      - google-chrome-stable
       - gtk2-engines-murrine
       - guake
       - libcanberra-gtk-module
@@ -99,6 +98,8 @@
       - repo: deb-src http://httpredir.debian.org/debian testing main contrib non-free
       - repo: deb-src http://httpredir.debian.org/debian testing-updates main contrib non-free
       - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
+      - repo: deb https://dl.google.com/linux/chrome/deb/ stable main  # deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
+        key: "https://dl.google.com/linux/linux_signing_key.pub"
   
   pre_tasks:
     - name: Download AnotherCountrySunset wallpaper
@@ -185,7 +186,7 @@
         option: gtk-application-prefer-dark-theme
         value: 1
 
-    - name: Firefox -- supress other unstable packages
+    - name: Debian repos -- supress unstable packages except Firefox
       become: yes
       copy:
         content: |
@@ -197,6 +198,12 @@
           Pin: release a=unstable
           Pin-Priority: 50
         dest: /etc/apt/preferences.d/unstable
+    
+    - name: Debian repos -- https support
+      become: yes
+      package:
+        name: apt-transport-https
+        state: present
   
   post_tasks:
     - name: dpath -- install with pip (Python) # to enable json module (from jpnewman.json)
@@ -282,9 +289,6 @@
   
   roles:
     - name: zerotao.packages
-      become: yes
-    
-    - name: cmprescott.chrome
       become: yes
     
     - alzadude.firefox
