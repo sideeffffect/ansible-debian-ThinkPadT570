@@ -68,6 +68,7 @@
       - fsharp
       - git
       - gitg
+      - glances
       - gnome-shell-extension-move-clock
       - gnome-shell-extension-redshift
       - gnome-shell-extension-system-monitor
