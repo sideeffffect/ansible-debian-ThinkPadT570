@@ -35,12 +35,12 @@
           value: true
         - name: browser.tabs.remote.force-enable
           value: true
-        - name: webgl.force-enabled
-          value: true
-        - name: webgl.msaa-force
-          value: true
-        - name: layers.acceleration.force-enabled
-          value: true
+#        - name: webgl.force-enabled
+#          value: true
+#        - name: webgl.msaa-force
+#          value: true
+#        - name: layers.acceleration.force-enabled
+#          value: true
       styles:
         - https://userstyles.org/styles/92693/dark-hacker-news-solarized
         - https://userstyles.org/styles/118959/darksearch-for-google
