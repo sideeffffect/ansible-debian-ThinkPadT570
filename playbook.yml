@@ -250,6 +250,19 @@
         content: bobthefish
         dest: ~/.config/omf/theme
     
+    - name: Local bin directory -- create
+      file:
+        path: ~/.local/bin
+        state: directory
+    
+    - name: Bin directories -- in PATH
+      lineinfile:
+        line: 'set -g -x PATH {{ item }} $PATH'
+        dest: ~/.config/fish/conf.d/path.fish
+        create: yes
+      with_items:
+        - "$HOME/.local/bin"
+    
     - name: GRUB -- widescreen
       become: yes
       lineinfile:
