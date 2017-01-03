@@ -81,6 +81,7 @@
       - guake
       - hunspell-cs
       - hyphen-cs
+      - latexmk
       - libcanberra-gtk-module
       - libpam-fprintd
       - libreoffice-help-cs
@@ -98,6 +99,11 @@
       - python-pip
       - sbt
       - sudo
+      - texlive
+      - texlive-lang-czechslovak
+      - texlive-lang-english
+      - texlive-luatex
+      - texlive-xetex
       - vim
     packages_remove:
       - firefox-esr
