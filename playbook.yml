@@ -56,11 +56,13 @@
     packages_add:
       - ansible
       - aptitude
+      - aspell-cs
       - curl
       - dconf-editor
       - deluge-console
       - deluge-gtk
       - firefox
+      - firefox-l10n-cs
       - firmware-iwlwifi
       - firmware-linux
       - fish
@@ -77,11 +79,17 @@
       - google-chrome-stable
       - gtk2-engines-murrine
       - guake
+      - hunspell-cs
+      - hyphen-cs
       - libcanberra-gtk-module
       - libpam-fprintd
+      - libreoffice-help-cs
+      - libreoffice-l10n-cs
       - libxml2-utils
       - liferea
       - mono-complete
+      - myspell-cs
+      - mythes-cs
       - openjdk-8-jdk
       - openjfx
       - plymouth
