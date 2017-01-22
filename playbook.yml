@@ -69,6 +69,7 @@
       - firmware-linux
       - fish
       - flatpak
+      - fonts-noto
       - fsharp
       - git
       - gitg
@@ -91,10 +92,10 @@
       - libxml2-utils
       - liferea
       - mono-complete
-      - myspell-cs
       - mythes-cs
       - openjdk-8-jdk
       - openjfx
+      - picard
       - plymouth
       - plymouth-themes
       - python-jsonpath-rw
