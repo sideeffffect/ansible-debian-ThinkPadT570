@@ -35,6 +35,8 @@
           value: true
         - name: browser.tabs.remote.force-enable
           value: true
+        - name: middlemouse.contentLoadURL
+          value: false
 #        - name: webgl.force-enabled
 #          value: true
 #        - name: webgl.msaa-force
