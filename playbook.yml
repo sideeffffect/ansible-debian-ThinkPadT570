@@ -313,7 +313,7 @@
     
     - name: Plymouth -- set theme
       become: yes
-      command: plymouth-set-default-theme -R lines
+      command: plymouth-set-default-theme -R softwaves
       when: kernelmodulesdrm.changed or kernelmodulesradeon.changed
     
     - name: GRUB -- update
