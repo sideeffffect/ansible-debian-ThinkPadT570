@@ -111,6 +111,7 @@
       - plymouth-themes
       - python-jsonpath-rw
       - python-pip
+      - python3-pip
       - sbt
       - sudo
       - texlive
@@ -239,9 +240,17 @@
   post_tasks:
     - name: dpath -- install with pip (Python) # to enable json module (from jpnewman.json)
       become: yes
-      command: pip install dpath
-      args:
-        creates: /usr/local/lib/python2.7/dist-packages/dpath
+      pip:
+        name: dpath
+        state: latest
+        executable: pip2
+    
+    - name: youtube-dl -- install with pip (Python)
+      become: yes
+      pip:
+        name: youtube-dl
+        state: latest
+        executable: pip3
     
     - name: Autostart applications
       copy:
