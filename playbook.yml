@@ -13,9 +13,10 @@
         - url: https://addons.mozilla.org/en-US/firefox/addon/stylish
         - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
         - url: https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
-        - url: https://addons.mozilla.org/en-US/firefox/addon/arc-dark-theme
+        - url: https://addons.mozilla.org/en-US/firefox/addon/ft-deepdark/
         - url: https://addons.mozilla.org/en-US/firefox/addon/gnotifier
         - url: https://addons.mozilla.org/en-US/firefox/addon/h264ify
+        - url: https://addons.mozilla.org/en-US/firefox/addon/firefox-gtk-dark-theme
       prefs:
         - name: browser.tabs.animate
           value: false
@@ -37,6 +38,14 @@
           value: true
         - name: middlemouse.contentLoadURL
           value: false
+        - name: extensions.tabmix.currentTab
+          value: true
+        - name: extensions.tabmix.otherTab
+          value: true
+        - name: extensions.tabmix.styles.currentTab
+          value: '{"italic":false,"bold":false,"underline":false,"text":true,"textColor":"rgba(0,0,0,1)","bg":false,"bgColor":"rgba(51,51,51,1)","bgTopColor":"rgba(51,51,51,1)"}'
+        - name: extensions.tabmix.styles.unreadTab
+          value: '{"italic":false,"bold":false,"underline":false,"text":true,"textColor":"rgba(153,0,0,1)","bg":false,"bgColor":"rgba(236,233,216,1)","bgTopColor":"rgba(236,233,216,1)"}'
 #        - name: webgl.force-enabled
 #          value: true
 #        - name: webgl.msaa-force
