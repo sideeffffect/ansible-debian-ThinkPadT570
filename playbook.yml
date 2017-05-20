@@ -68,6 +68,7 @@
       - ansible
       - aptitude
       - aspell-cs
+      - code                # Visual Studio Code
       - curl
       - dconf-editor
       - deluge-console
@@ -102,12 +103,15 @@
       - libpam-fprintd
       - libreoffice-help-cs
       - libreoffice-l10n-cs
+      - liblttng-ust0       # .NET core
+      - libunwind8          # .NET core
       - libxml-xpath-perl   #ctstream
       - libxml2-utils
       - liferea
       - minitube
       - mono-complete
       - mythes-cs
+      - npm                 # F# fable
       - openjdk-8-jdk
       - openjfx
       - picard
@@ -134,10 +138,14 @@
       - repo: deb-src http://httpredir.debian.org/debian testing main contrib non-free
       - repo: deb-src http://httpredir.debian.org/debian testing-updates main contrib non-free
       - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
+      - repo: deb http://download.mono-project.com/repo/debian wheezy main
+        key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
       - repo: deb https://dl.bintray.com/sbt/debian /
         key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823"
       - repo: deb https://dl.google.com/linux/chrome/deb/ stable main
         key: "https://dl.google.com/linux/linux_signing_key.pub"
+      - repo: deb http://packages.microsoft.com/repos/vscode stable main
+        key: "https://packages.microsoft.com/keys/microsoft.asc"
       - repo: deb https://download.docker.com/linux/debian stretch stable
         key: "https://download.docker.com/linux/debian/gpg"
   
