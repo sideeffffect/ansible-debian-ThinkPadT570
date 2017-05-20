@@ -92,6 +92,7 @@
       - google-chrome-stable
       - gtk2-engines-murrine
       - guake
+      - heimdall-flash-frontend
       - hunspell-cs
       - hyphen-cs
       - latexmk
