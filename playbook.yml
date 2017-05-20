@@ -98,9 +98,11 @@
       - hyphen-cs
       - latexmk
       - libcanberra-gtk-module
+      - libjson-perl        #ctstream
       - libpam-fprintd
       - libreoffice-help-cs
       - libreoffice-l10n-cs
+      - libxml-xpath-perl   #ctstream
       - libxml2-utils
       - liferea
       - minitube
