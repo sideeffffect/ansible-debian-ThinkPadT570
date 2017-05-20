@@ -119,6 +119,7 @@
       - texlive-lang-english
       - texlive-luatex
       - texlive-xetex
+      - unrar
       - vim
       - vlc
     packages_repos:
