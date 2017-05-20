@@ -120,6 +120,7 @@
       - texlive-luatex
       - texlive-xetex
       - vim
+      - vlc
     packages_repos:
       - repo: deb http://httpredir.debian.org/debian testing main contrib non-free
       - repo: deb http://httpredir.debian.org/debian testing-updates main contrib non-free
