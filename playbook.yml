@@ -310,6 +310,14 @@
       with_items:
         - "$HOME/.local/bin"
     
+    - name: Environment variables
+      lineinfile:
+        line: 'set -g -x {{ item.name }} {{ item.value }}'
+        dest: ~/.config/fish/conf.d/variables.fish
+        create: yes
+      with_items:
+        - { name: "EDITOR", value: "/usr/bin/gedit" }
+    
     - name: GRUB -- widescreen
       become: yes
       lineinfile:
