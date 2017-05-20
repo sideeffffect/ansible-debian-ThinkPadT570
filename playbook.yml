@@ -72,6 +72,7 @@
       - dconf-editor
       - deluge-console
       - deluge-gtk
+      - docker-ce
       - firefox
       - firefox-l10n-cs
       - firmware-iwlwifi
@@ -133,8 +134,10 @@
       - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
       - repo: deb https://dl.bintray.com/sbt/debian /
         key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823"
-      - repo: deb https://dl.google.com/linux/chrome/deb/ stable main  # deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
+      - repo: deb https://dl.google.com/linux/chrome/deb/ stable main
         key: "https://dl.google.com/linux/linux_signing_key.pub"
+      - repo: deb https://download.docker.com/linux/debian stretch stable
+        key: "https://download.docker.com/linux/debian/gpg"
   
   pre_tasks:
     - name: Download AnotherCountrySunset wallpaper
@@ -268,9 +271,13 @@
         - net.sourceforge.liferea
         - rhythmbox
     
-    - name: Fish -- default shell
+    - name: Set default shell and groups
       become: yes
-      command: chsh -s /usr/bin/fish
+      user:
+        name: ondra
+        shell: /usr/bin/fish
+        groups: docker
+        append: yes
     
     - name: Fish -- oh-my-fish -- install
       shell: curl -L http://get.oh-my.fish > /tmp/install ; fish /tmp/install --noninteractive --yes
