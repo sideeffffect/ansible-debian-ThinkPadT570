@@ -65,6 +65,8 @@
         - https://userstyles.org/styles/120595/gmail-dark-1
     
     packages_add:
+      - acroread:i386
+      - acroread-plugins:i386
       - ansible
       - aptitude
       - aspell-cs
@@ -90,6 +92,7 @@
       - gnome-shell-extension-system-monitor
       - gnome-shell-extension-weather
       - gnome-software-plugin-flatpak
+      - gnome-themes-standard:i386
       - gnome-tweak-tool
       - google-chrome-stable
       - gtk2-engines-murrine
@@ -98,12 +101,14 @@
       - hunspell-cs
       - hyphen-cs
       - latexmk
+      - libatk-adaptor:i386
       - libcanberra-gtk-module
+      - libcanberra-gtk-module:i386
       - libjson-perl        #ctstream
+      - liblttng-ust0       # .NET core
       - libpam-fprintd
       - libreoffice-help-cs
       - libreoffice-l10n-cs
-      - liblttng-ust0       # .NET core
       - libunwind8          # .NET core
       - libxml-xpath-perl   #ctstream
       - libxml2-utils
@@ -138,6 +143,8 @@
       - repo: deb-src http://httpredir.debian.org/debian testing main contrib non-free
       - repo: deb-src http://httpredir.debian.org/debian testing-updates main contrib non-free
       - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
+      - repo: deb http://www.deb-multimedia.org testing main non-free
+        key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
       - repo: deb http://download.mono-project.com/repo/debian wheezy main
         key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
       - repo: deb https://dl.bintray.com/sbt/debian /
@@ -246,6 +253,10 @@
           Pin: release a=unstable
           Pin-Priority: 50
         dest: /etc/apt/preferences.d/unstable
+
+    - name: Debian repos -- i386 architecture
+      become: yes
+      command: dpkg --add-architecture i386
     
     - name: Debian repos -- https support
       become: yes
