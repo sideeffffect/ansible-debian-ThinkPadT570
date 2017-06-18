@@ -36,6 +36,10 @@
           value: true
         - name: browser.tabs.remote.force-enable
           value: true
+        - name: dom.ipc.processCount
+          value: 99
+        - name: dom.ipc.processCount.extension
+          value: 99
         - name: middlemouse.contentLoadURL
           value: false
         - name: extensions.tabmix.currentTab
