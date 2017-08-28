@@ -109,6 +109,7 @@
       - hunspell-cs
       - hyphen-cs
       - latexmk
+      - lib32stdc++6
       - libatk-adaptor:i386
       - libcanberra-gtk-module
       - libcanberra-gtk-module:i386
