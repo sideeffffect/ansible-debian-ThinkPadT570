@@ -328,10 +328,15 @@
         content: bobthefish
         dest: ~/.config/omf/theme
     
-    - name: Local bin directory -- create
-      file:
-        path: ~/.local/bin
-        state: directory
+    - name: sudo on Wayland
+      copy:
+        content: |
+          #!/bin/bash
+          xhost +SI:localuser:root
+          sudo $1
+          xhost -SI:localuser:root
+          xhost
+        dest: ~/.local/bin/wsudo
     
     - name: Bin directories -- in PATH
       lineinfile:
