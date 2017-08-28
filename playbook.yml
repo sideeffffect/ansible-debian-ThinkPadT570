@@ -124,6 +124,7 @@
       - minitube
       - mono-complete
       - mythes-cs
+      - network-manager-openvpn-gnome
       - npm                 # F# fable
       - openjdk-8-jdk
       - openjfx
