@@ -195,7 +195,7 @@
       with_items:
         - net.sf.liferea default-view-mode 1
         - net.sf.liferea disable-toolbar true
-        - net.sf.liferea.plugins active-plugins "['media-player', 'libnotify', 'gnome-keyring']"
+        - net.sf.liferea.plugins active-plugins "['media-player', 'gnome-keyring']"
         
         - org.freedesktop.Tracker.Extract sched-idle 'always'
         - org.freedesktop.Tracker.Miner.Files sched-idle 'always'
