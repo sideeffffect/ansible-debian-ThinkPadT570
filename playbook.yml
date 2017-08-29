@@ -313,7 +313,7 @@
         append: yes
     
     - name: Fish -- oh-my-fish -- install
-      shell: curl -L http://get.oh-my.fish > /tmp/install ; fish /tmp/install --noninteractive --yes
+      shell: curl -L http://get.oh-my.fish | fish /dev/stdin --noninteractive --yes
       args:
         creates: ~/.config/fish/conf.d/omf.fish
     
