@@ -145,7 +145,7 @@
       - texlive-luatex
       - texlive-xetex
       - unrar
-      - vim
+      - vim-nox
       - vlc
     packages_repos:
       - repo: deb http://httpredir.debian.org/debian testing main contrib non-free
