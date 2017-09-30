@@ -91,6 +91,7 @@
       - firmware-iwlwifi
       - firmware-linux
       - fish
+      - flac
       - flatpak
       - fonts-noto
       - fsharp
@@ -140,6 +141,7 @@
       - python-pip
       - python3-pip
       - sbt
+      - shntool
       - sudo
       - texlive
       - texlive-lang-czechslovak
