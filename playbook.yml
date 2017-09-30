@@ -54,6 +54,8 @@
           value: false
         - name: browser.disableResetPrompt
           value: true
+        - name: services.sync.prefs.sync.extensions.ublock0.cloudStorage.tpFiltersPane
+          value: true
 #        - name: webgl.force-enabled
 #          value: true
 #        - name: webgl.msaa-force
