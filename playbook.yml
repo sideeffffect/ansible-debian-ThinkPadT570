@@ -1,6 +1,6 @@
 ---
 
-- hosts: debian-thinkpadw500
+- hosts: debian-ThinkPadT570
 
   vars:
     firefox:
@@ -13,10 +13,7 @@
         - url: https://addons.mozilla.org/en-US/firefox/addon/stylish
         - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
         - url: https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
-        - url: https://addons.mozilla.org/en-US/firefox/addon/ft-deepdark/
         - url: https://addons.mozilla.org/en-US/firefox/addon/gnotifier
-        - url: https://addons.mozilla.org/en-US/firefox/addon/h264ify
-        - url: https://addons.mozilla.org/en-US/firefox/addon/firefox-gtk-dark-theme
       prefs:
         - name: browser.tabs.animate
           value: false
@@ -46,30 +43,14 @@
           value: true
         - name: extensions.tabmix.otherTab
           value: true
-        - name: extensions.tabmix.styles.currentTab
-          value: '{"italic":false,"bold":false,"underline":false,"text":true,"textColor":"rgba(0,0,0,1)","bg":false,"bgColor":"rgba(51,51,51,1)","bgTopColor":"rgba(51,51,51,1)"}'
-        - name: extensions.tabmix.styles.unreadTab
-          value: '{"italic":false,"bold":false,"underline":false,"text":true,"textColor":"rgba(153,0,0,1)","bg":false,"bgColor":"rgba(236,233,216,1)","bgTopColor":"rgba(236,233,216,1)"}'
-        - name: plugin.load_flash_only
-          value: false
         - name: browser.disableResetPrompt
           value: true
-        - name: services.sync.prefs.sync.extensions.ublock0.cloudStorage.tpFiltersPane
-          value: true
-#        - name: webgl.force-enabled
-#          value: true
-#        - name: webgl.msaa-force
-#          value: true
-#        - name: layers.acceleration.force-enabled
-#          value: true
       styles:
         - https://userstyles.org/styles/92693/dark-hacker-news-solarized
         - https://userstyles.org/styles/118959/darksearch-for-google
         - https://userstyles.org/styles/37035/github-dark
         - https://userstyles.org/styles/108591/github-wide
-        - https://userstyles.org/styles/130610/youtube-umbra
         - https://userstyles.org/styles/122072/wikipedia-minimalistic-dark-material-design
-        - https://userstyles.org/styles/105609/userstyles-dark-aperopia
         - https://userstyles.org/styles/25811/amo-dark-theme
         - https://userstyles.org/styles/35345/stackoverflow-dark
         - https://userstyles.org/styles/120595/gmail-dark-1
@@ -88,6 +69,7 @@
       - docker-ce
       - firefox
       - firefox-l10n-cs
+      - firmware-intel-sound
       - firmware-iwlwifi
       - firmware-linux
       - fish
@@ -95,11 +77,12 @@
       - flatpak
       - fonts-noto
       - fsharp
+      - gconf2
+      - genisoimage
       - git
       - gitg
       - glances
       - gnome-shell-extension-move-clock
-      - gnome-shell-extension-redshift
       - gnome-shell-extension-system-monitor
       - gnome-shell-extension-weather
       - gnome-software-plugin-flatpak
@@ -126,7 +109,6 @@
       - libxml-xpath-perl   #ctstream
       - libxml2-utils
       - liferea
-      - minitube
       - mono-complete
       - mtr-tiny
       - mythes-cs
@@ -142,15 +124,18 @@
       - python3-pip
       - sbt
       - shntool
+      - snapper
       - sudo
       - texlive
       - texlive-lang-czechslovak
       - texlive-lang-english
       - texlive-luatex
       - texlive-xetex
+      - tree
       - unrar
       - vim-nox
       - vlc
+      - xinput
     packages_repos:
       - repo: deb http://httpredir.debian.org/debian testing main contrib non-free
       - repo: deb http://httpredir.debian.org/debian testing-updates main contrib non-free
@@ -173,10 +158,66 @@
         key: "https://download.docker.com/linux/debian/gpg"
   
   pre_tasks:
+    - name: Debian repos -- supress unstable packages except Firefox
+      become: yes
+      copy:
+        content: |
+          Package: firefox*
+          Pin: release a=unstable
+          Pin-Priority: 600
+          
+          Package: *
+          Pin: release a=unstable
+          Pin-Priority: 50
+        dest: /etc/apt/preferences.d/unstable
+
+    - name: Debian repos -- i386 architecture
+      become: yes
+      command: dpkg --add-architecture i386
+    
+    - name: Debian repos -- https support
+      become: yes
+      package:
+        name: apt-transport-https
+        state: present
+  
+  post_tasks:
+    - name: Debian repos -- remove old sources.list
+      become: yes
+      file:
+        path: /etc/apt/sources.list
+        state: absent
+
+    - name: /tmp in RAM -- tmp.mount available
+      become: yes
+      copy:
+        src: /usr/share/systemd/tmp.mount
+        dest: /etc/systemd/system/
+    
+    - name: /tmp in RAM -- enable in systemd
+      become: yes
+      systemd:
+        name: tmp.mount
+        enabled: yes
+    
+    - name: Snapper -- enable timelines and cleanup
+      become: yes
+      systemd:
+        name: snapper-{{ item }}.timer
+        enabled: yes
+      with_items:
+        - timeline
+        - cleanup
+    
     - name: Download AnotherCountrySunset wallpaper
       get_url:
         url: http://ftp.gnome.org/pub/GNOME/teams/art.gnome.org/backgrounds/NATURE-AnotherCountrySunset_1920x1200.jpg
         dest: '~/Pictures/NATURE-AnotherCountrySunset_1920x1200.jpg'
+    
+    - name: Fonts -- directory
+      file:
+        path: '~/.local/share/fonts'
+        state: directory
     
     - name: Fonts -- Fira Code -- download
       get_url:
@@ -190,7 +231,11 @@
         - Retina
 
     - name: gconf
-      command: gconftool-2 -s {{ item.key }} {{ item.value }} -t {{ item.type }}
+      gconftool2:
+        key: '{{ item.key }}'
+        value: '{{ item.value }}'
+        value_type: '{{ item.type }}'
+        state: present
       with_items:
         - { key: /apps/guake/keybindings/global/show_hide, value: "<Shift>space", type: string }
 
@@ -229,11 +274,13 @@
         - org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
         - org.gnome.settings-daemon.plugins.xsettings hinting 'full'
         
-        - org.gnome.shell enabled-extensions "['redshift@tommie-lie.de', 'Move_Clock@jonathan.bluemosh.com', 'openweather-extension@jenslody.de', 'system-monitor@paradoxxx.zero.gmail.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com']"
-        - org.gnome.shell favorite-apps "['firefox.desktop', 'google-chrome.desktop', 'evolution.desktop', 'empathy.desktop', 'net.sourceforge.liferea.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop']"
+        - org.gnome.settings-daemon.plugins.color night-light-enabled true
+        
+        - org.gnome.shell enabled-extensions "['Move_Clock@jonathan.bluemosh.com', 'openweather-extension@jenslody.de', 'system-monitor@paradoxxx.zero.gmail.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com']"
+        - org.gnome.shell favorite-apps "['firefox.desktop', 'google-chrome.desktop', 'evolution.desktop', 'net.sourceforge.liferea.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop']"
         - org.gnome.shell.app-switcher current-workspace-only true
         
-        - org.gnome.shell.extensions.auto-move-windows application-list "['firefox.desktop:1', 'google-chrome.desktop:1', 'evolution.desktop:2', 'empathy.desktop:2', 'net.sourceforge.liferea.desktop:3', 'rhythmbox.desktop:4']"
+        - org.gnome.shell.extensions.auto-move-windows application-list "['firefox.desktop:1', 'google-chrome.desktop:1', 'evolution.desktop:2', 'net.sourceforge.liferea.desktop:3', 'rhythmbox.desktop:4']"
         
         - org.gnome.shell.extensions.openweather city '50.0596288,14.446459273258>Praha, Česko >-1'
         - org.gnome.shell.extensions.openweather position-in-panel 'right'
@@ -256,31 +303,7 @@
         section: Settings
         option: gtk-application-prefer-dark-theme
         value: 1
-
-    - name: Debian repos -- supress unstable packages except Firefox
-      become: yes
-      copy:
-        content: |
-          Package: firefox*
-          Pin: release a=unstable
-          Pin-Priority: 600
-          
-          Package: *
-          Pin: release a=unstable
-          Pin-Priority: 50
-        dest: /etc/apt/preferences.d/unstable
-
-    - name: Debian repos -- i386 architecture
-      become: yes
-      command: dpkg --add-architecture i386
     
-    - name: Debian repos -- https support
-      become: yes
-      package:
-        name: apt-transport-https
-        state: present
-  
-  post_tasks:
     - name: dpath -- install with pip (Python) # to enable json module (from jpnewman.json)
       become: yes
       pip:
@@ -300,7 +323,6 @@
         src: /usr/share/applications/{{ item }}.desktop
         dest: ~/.config/autostart/
       with_items:
-        - empathy
         - evolution
         - firefox
         - google-chrome
@@ -321,26 +343,15 @@
       args:
         creates: ~/.config/fish/conf.d/omf.fish
     
-    - name: Fish -- oh-my-fish -- theme bundle
-      lineinfile:
-        line: theme bobthefish
-        dest: ~/.config/omf/bundle
-        create: yes
+    - name: Fish -- oh-my-fish -- theme 'bobthefish'
+      command: omf install bobthefish ; omf theme bobthefish
+      args:
+        creates: ~/.local/share/omf/themes/bobthefish
     
-    - name: Fish -- oh-my-fish -- theme
-      copy:
-        content: bobthefish
-        dest: ~/.config/omf/theme
-    
-    - name: sudo on Wayland
-      copy:
-        content: |
-          #!/bin/bash
-          xhost +SI:localuser:root
-          sudo $1
-          xhost -SI:localuser:root
-          xhost
-        dest: ~/.local/bin/wsudo
+    - name: Bin directories -- present
+      file:
+        path: '~/.local/bin'
+        state: directory
     
     - name: Bin directories -- in PATH
       lineinfile:
@@ -358,47 +369,72 @@
       with_items:
         - { name: "EDITOR", value: "/usr/bin/gedit" }
     
+    - name: sudo on Wayland
+      copy:
+        content: |
+          #!/bin/bash
+          xhost +SI:localuser:root
+          sudo $1
+          xhost -SI:localuser:root
+          xhost
+        dest: ~/.local/bin/wsudo
+        mode: u+x
+    
     - name: GRUB -- widescreen
       become: yes
       lineinfile:
         dest: /etc/default/grub
         regexp: '^GRUB_GFXMODE='
         insertafter: '^#GRUB_GFXMODE='
-        line: 'GRUB_GFXMODE=1920x1200x32'
+        line: 'GRUB_GFXMODE=1920x1080x32'
       register: grubconfigwidescreen
+    
+    - name: Plymouth -- modesetting kernel modules -- intel_agp
+      become: yes
+      lineinfile:
+        dest: /etc/initramfs-tools/modules
+        line: intel_agp
+      register: kernelmodulesintelagp
     
     - name: Plymouth -- modesetting kernel modules -- drm
       become: yes
       lineinfile:
         dest: /etc/initramfs-tools/modules
+        insertafter: intel_agp
         line: drm
       register: kernelmodulesdrm
     
-    - name: Plymouth -- modesetting kernel modules -- radeon
+    - name: Plymouth -- modesetting kernel modules -- i915
       become: yes
       lineinfile:
         dest: /etc/initramfs-tools/modules
-        regexp: '^radeon '
-        line: 'radeon modeset=1'
-      register: kernelmodulesradeon
+        regexp: '^i915 '
+        line: 'i915 modeset=1'
+      register: kernelmodulesi915
     
     - name: Plymouth -- GRUB config
       become: yes
       lineinfile:
         dest: /etc/default/grub
         regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
-        line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash irqpoll"'
+        line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"'
       register: grubconfigplymouth
     
     - name: Plymouth -- set theme
       become: yes
       command: plymouth-set-default-theme -R softwaves
-      when: kernelmodulesdrm.changed or kernelmodulesradeon.changed
+      when: kernelmodulesintelagp.changed or kernelmodulesdrm.changed or kernelmodulesi915.changed
     
     - name: GRUB -- update
       become: yes
       command: update-grub2
       when: grubconfigwidescreen.changed or grubconfigplymouth.changed
+    
+    - name: Remove Firefox ESR
+      become: yes
+      package:
+        name: firefox-esr
+        state: absent
   
   roles:
     - name: zerotao.packages
