@@ -290,12 +290,30 @@
         
         - org.gtk.Settings.FileChooser sort-directories-first true
     
-    - name: Fonts -- lcdfilter
-      lineinfile:
+    - name: Fonts -- Xresources
+      copy:
+        content: |
+          Xft.autohint: 0
+          Xft.antialias: 1
+          Xft.dpi: 96
+          Xft.hinting: 1
+          Xft.hintstyle: hintfull
+          Xft.lcdfilter: lcddefault
+          Xft.rgba: rgb
         dest: ~/.Xresources
-        regexp: "^Xft.lcdfilter:"
-        line: "Xft.lcdfilter: lcddefault"
-        create: yes
+    
+    - name: Fonts -- fonts.conf
+      copy:
+        content: |
+          <match target="font">
+            <edit mode="assign" name="rgba"><const>rgb</const></edit>
+            <edit mode="assign" name="autohint"><bool>false</bool></edit>
+            <edit mode="assign" name="hinting"><bool>true</bool></edit>
+            <edit mode="assign" name="hintstyle"><const>hintfull</const></edit>
+            <edit mode="assign" name="antialias"><bool>true</bool></edit>
+            <edit mode="assign" name="lcdfilter"><const>lcddefault</const></edit>
+          </match>
+        dest: ~/.config/fontconfig/fonts.conf
     
     - name: Global GTK+ dark theme
       ini_file:
