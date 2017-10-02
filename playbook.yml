@@ -380,6 +380,11 @@
         dest: ~/.local/bin/wsudo
         mode: u+x
     
+    - name: Flatpack -- add Flathub
+      command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      args:
+        creates: /var/lib/flatpak/appstream/flathub
+    
     - name: GRUB -- widescreen
       become: yes
       lineinfile:
