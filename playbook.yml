@@ -274,6 +274,8 @@
         - org.gnome.gedit.preferences.editor tabs-size 2
         - org.gnome.gedit.preferences.ui show-tabs-mode 'auto'
         
+        - org.gnome.rhythmbox.player use-xfade-backend true
+        
         - org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
         - org.gnome.settings-daemon.plugins.xsettings hinting 'full'
         
