@@ -61,6 +61,7 @@
       - ansible
       - aptitude
       - aspell-cs
+      - bash-completion
       - code                # Visual Studio Code
       - curl
       - dconf-editor
