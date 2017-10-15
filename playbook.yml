@@ -67,6 +67,7 @@
       - deluge-console
       - deluge-gtk
       - docker-ce
+      - ffmpeg
       - firefox
       - firefox-l10n-cs
       - firmware-intel-sound
