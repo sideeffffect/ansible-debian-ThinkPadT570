@@ -91,6 +91,7 @@
       - gnome-tweak-tool
       - google-chrome-stable
       - gstreamer1.0-packagekit
+      - gstreamer1.0-vaapi
       - gtk2-engines-murrine
       - guake
       - heimdall-flash-frontend
