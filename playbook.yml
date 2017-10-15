@@ -140,12 +140,12 @@
       - vlc
       - xinput
     packages_repos:
-      - repo: deb http://httpredir.debian.org/debian testing main contrib non-free
-      - repo: deb http://httpredir.debian.org/debian testing-updates main contrib non-free
-      - repo: deb http://httpredir.debian.org/debian unstable main
+      - repo: deb http://deb.debian.org/debian testing main contrib non-free
+      - repo: deb http://deb.debian.org/debian testing-updates main contrib non-free
+      - repo: deb http://deb.debian.org/debian unstable main
       - repo: deb http://security.debian.org/ testing/updates main contrib non-free
-      - repo: deb-src http://httpredir.debian.org/debian testing main contrib non-free
-      - repo: deb-src http://httpredir.debian.org/debian testing-updates main contrib non-free
+      - repo: deb-src http://deb.debian.org/debian testing main contrib non-free
+      - repo: deb-src http://deb.debian.org/debian testing-updates main contrib non-free
       - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
       - repo: deb http://www.deb-multimedia.org testing main non-free
         key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
