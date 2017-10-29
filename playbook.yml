@@ -65,6 +65,7 @@
       - code                # Visual Studio Code
       - curl
       - dconf-editor
+      - deb-multimedia-keyring
       - deluge-console
       - deluge-gtk
       - docker-ce
@@ -149,6 +150,8 @@
       - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
       - repo: deb http://www.deb-multimedia.org testing main non-free
         key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
+      - repo: deb-src http://www.deb-multimedia.org testing main non-free
+        key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
       - repo: deb http://download.mono-project.com/repo/debian wheezy main
         key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
       - repo: deb https://dl.bintray.com/sbt/debian /
@@ -173,7 +176,16 @@
           Pin: release a=unstable
           Pin-Priority: 50
         dest: /etc/apt/preferences.d/unstable
-
+    
+    - name: Debian repos -- suppress deb-multimedia packages
+      become: yes
+      copy:
+        content: |
+          Package: *
+          Pin: origin *.deb-multimedia.org
+          Pin-Priority: 50
+        dest: /etc/apt/preferences.d/deb-multimedia
+    
     - name: Debian repos -- i386 architecture
       become: yes
       command: dpkg --add-architecture i386
