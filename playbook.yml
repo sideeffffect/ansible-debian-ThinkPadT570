@@ -190,11 +190,12 @@
       become: yes
       command: dpkg --add-architecture i386
     
-    - name: Debian repos -- https support
-      become: yes
-      package:
-        name: apt-transport-https
-        state: present
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #One day
   
   post_tasks:
     - name: Debian repos -- remove old sources.list
