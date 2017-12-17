@@ -5,55 +5,48 @@
   vars:
     firefox:
       addons:
-        - url: https://addons.mozilla.org/en-US/firefox/addon/https-everywhere
-        - url: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin
-        - url: https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab
-        - url: https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix
-        - url: https://addons.mozilla.org/en-US/firefox/addon/firegestures
-        - url: https://addons.mozilla.org/en-US/firefox/addon/stylish
-        - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
-        - url: https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
-        - url: https://addons.mozilla.org/en-US/firefox/addon/gnotifier
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/https-everywhere
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/stylish
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/gesturefy
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-download-notifications
       prefs:
-        - name: browser.tabs.animate
+        - name: toolkit.cosmeticAnimations.enabled
           value: false
         - name: browser.startup.page
           value: 3
-        - name: extensions.treestyletab.autoCollapseExpandSubtreeOnAttach
-          value: false
-        - name: extensions.treestyletab.tooltip.mode
-          value: 0
         - name: accessibility.typeaheadfind
           value: true
         - name: browser.sessionstore.restore_on_demand
           value: false
-        - name: extensions.tabmix.currentTab
-          value: true
-        - name: browser.tabs.remote.autostart
-          value: true
-        - name: browser.tabs.remote.force-enable
-          value: true
         - name: dom.ipc.processCount
           value: 99
         - name: dom.ipc.processCount.extension
           value: 99
+        - name: dom.ipc.processCount.file
+          value: 99
+        - name: dom.ipc.processCount.webLargeAllocation
+          value: 99
         - name: middlemouse.contentLoadURL
           value: false
-        - name: extensions.tabmix.currentTab
-          value: true
-        - name: extensions.tabmix.otherTab
-          value: true
         - name: browser.disableResetPrompt
           value: true
+        - name: lightweightThemes.selectedThemeID
+          value: firefox-compact-dark@mozilla.org
+        - name: widget.chrome.allow-gtk-dark-theme
+          value: true
       styles:
-        - https://userstyles.org/styles/92693/dark-hacker-news-solarized
-        - https://userstyles.org/styles/118959/darksearch-for-google
-        - https://userstyles.org/styles/37035/github-dark
-        - https://userstyles.org/styles/108591/github-wide
-        - https://userstyles.org/styles/122072/wikipedia-minimalistic-dark-material-design
-        - https://userstyles.org/styles/25811/amo-dark-theme
-        - https://userstyles.org/styles/35345/stackoverflow-dark
-        - https://userstyles.org/styles/120595/gmail-dark-1
+#        - https://userstyles.org/styles/133890/dark-hackernews
+#        - https://userstyles.org/styles/118959/darksearch-for-google
+#        - https://userstyles.org/styles/37035/github-dark
+#        - https://userstyles.org/styles/108591/github-wide
+#        - https://userstyles.org/styles/122072/wikipedia-minimalistic-dark-material-design
+#        - https://userstyles.org/styles/25811/amo-dark-theme
+#        - https://userstyles.org/styles/35345/stackoverflow-dark
+#        - https://userstyles.org/styles/120595/gmail-dark-1
     
     packages_add:
       - acroread:i386
