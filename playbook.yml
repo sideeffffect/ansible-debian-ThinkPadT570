@@ -236,7 +236,7 @@
     
     - name: Fonts -- Fira Code -- download
       get_url:
-        url: https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-{{ item }}.ttf?raw=true
+        url: https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-{{ item }}.ttf
         dest: '~/.local/share/fonts/FiraCode-{{ item }}.ttf'
       with_items:
         - Bold
@@ -244,6 +244,34 @@
         - Medium
         - Regular
         - Retina
+    
+    - name: Fonts -- Fira Mono -- download
+      get_url:
+        url: https://github.com/mozilla/Fira/raw/master/ttf/FiraMono-{{ item }}.ttf
+        dest: '~/.local/share/fonts/FiraMono-{{ item }}.ttf'
+      with_items:
+        - Bold
+        - Medium
+        - Regular
+    
+    - name: Fonts -- Fira Mono Powerline -- download
+      get_url:
+        url: 'https://github.com/powerline/fonts/raw/master/FiraMono/FuraMono-{{ item }}%20Powerline.otf'
+        dest: '~/.local/share/fonts/FuraMono-{{ item }} Powerline.otf'
+      with_items:
+        - Bold
+        - Medium
+        - Regular
+    
+    - name: Fonts -- DejaVu Sans Mono for Powerline -- download
+      get_url:
+        url: 'https://github.com/powerline/fonts/raw/master/DejaVuSansMono/DejaVu%20Sans%20Mono%20{{ item }}for%20Powerline.ttf'
+        dest: '~/.local/share/fonts/DejaVu Sans Mono {{ item }}for Powerline.ttf'
+      with_items:
+        - ''
+        - 'Bold%20'
+        - 'Oblique%20'
+        - 'Bold%20Oblique%20'
 
     - name: gconf
       gconftool2:
