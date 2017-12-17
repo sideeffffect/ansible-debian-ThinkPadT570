@@ -68,6 +68,7 @@
       - deb-multimedia-keyring
       - deluge-console
       - deluge-gtk
+      - dnsutils
       - docker-ce
       - ffmpeg
       - firefox
