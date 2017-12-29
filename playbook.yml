@@ -64,6 +64,7 @@
       - deluge-gtk
       - dnsutils
       - docker-ce
+      - empathy
       - ffmpeg
       - firefox
       - firefox-l10n-cs
@@ -406,6 +407,7 @@
         src: /usr/share/applications/{{ item }}.desktop
         dest: ~/.config/autostart/
       with_items:
+        - empathy
         - evolution
         - firefox
         - guake
