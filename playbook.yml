@@ -13,6 +13,7 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gesturefy
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-download-notifications
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/torrentz2-magnet-links
       prefs:
         - name: toolkit.cosmeticAnimations.enabled
           value: false
