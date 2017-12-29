@@ -405,7 +405,7 @@
     - name: Fish -- oh-my-fish -- install
       shell: curl -L http://get.oh-my.fish | fish /dev/stdin --noninteractive --yes
       args:
-        creates: ~/.config/fish/conf.d/omf.fish
+        creates: ~/.local/share/omf/init.fish
     
     - name: Fish -- oh-my-fish -- theme 'bobthefish'
       command: omf install bobthefish ; omf theme bobthefish
