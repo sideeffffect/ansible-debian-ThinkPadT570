@@ -65,6 +65,7 @@
       - dnsutils
       - docker-ce
       - empathy
+      - fasd
       - ffmpeg
       - firefox
       - firefox-l10n-cs
@@ -74,6 +75,7 @@
       - fish
       - flac
       - flatpak
+      - fluid-soundfont-gs
       - fonts-noto
       - fsharp
       - gconf2
@@ -322,7 +324,7 @@
         - org.gnome.shell favorite-apps "['firefox.desktop', 'evolution.desktop', 'net.sourceforge.liferea.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop']"
         - org.gnome.shell.app-switcher current-workspace-only true
         
-        - org.gnome.shell.extensions.auto-move-windows application-list "['firefox.desktop:1', 'evolution.desktop:2', 'net.sourceforge.liferea.desktop:3', 'rhythmbox.desktop:4']"
+        - org.gnome.shell.extensions.auto-move-windows application-list "['firefox.desktop:1', 'evolution.desktop:2', 'empathy.desktop:2', 'chrome-bikioccmkafdpakkkcpdbppfkghcmihk-Default.desktop:2', 'net.sourceforge.liferea.desktop:3', 'rhythmbox.desktop:4']"
         
         - org.gnome.shell.extensions.openweather city '50.0596288,14.446459273258>Praha, Česko >-1'
         - org.gnome.shell.extensions.openweather position-in-panel 'right'
@@ -430,7 +432,7 @@
         append: yes
     
     - name: Fish -- oh-my-fish -- install
-      shell: curl -L http://get.oh-my.fish | fish /dev/stdin --noninteractive --yes
+      shell: curl -L https://get.oh-my.fish | fish /dev/stdin --noninteractive --yes
       args:
         creates: ~/.local/share/omf/init.fish
     
@@ -454,7 +456,7 @@
     
     - name: Environment variables
       lineinfile:
-        line: 'set -g -x {{ item.name }} {{ item.value }}'
+        line: 'set -g -x {{ item.name }} "{{ item.value }}"'
         dest: ~/.config/fish/conf.d/variables.fish
         create: yes
       with_items:
