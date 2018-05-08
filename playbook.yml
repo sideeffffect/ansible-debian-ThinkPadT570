@@ -60,6 +60,8 @@
       - curl
       - dconf-editor
       - deb-multimedia-keyring
+      - default-jdk
+      - default-jdk-doc
       - deluge-console
       - deluge-gtk
       - dnsutils
@@ -100,6 +102,7 @@
       - hunspell-cs
       - hyphen-cs
       - latexmk
+      - lib32ncurses5
       - lib32stdc++6
       - libatk-adaptor:i386
       - libcanberra-gtk-module
@@ -113,6 +116,7 @@
       - libxml-xpath-perl   #ctstream
       - libxml2-utils
       - liferea
+      - mesa-utils
       - mono-complete
       - mtr-tiny
       - mythes-cs
@@ -126,6 +130,7 @@
       - python-jsonpath-rw
       - python-pip
       - python3-pip
+      - qemu-kvm
       - sbt
       - shntool
       - snapper
@@ -138,6 +143,7 @@
       - tree
       - unrar
       - vim-nox
+      - virt-manager
       - vlc
       - xinput
     packages_repos:
@@ -432,7 +438,11 @@
       user:
         name: ondra
         shell: /usr/bin/fish
-        groups: docker
+        groups:
+          - docker
+          - kvm
+          - libvirt
+          - libvirt-qemu
         append: yes
     
     - name: Fish -- oh-my-fish -- install
@@ -457,6 +467,9 @@
         create: yes
       with_items:
         - "$HOME/.local/bin"
+        - "$HOME/.local/Android/tools/bin"
+        - "$HOME/.local/Android/platform-tools"
+        - "$HOME/.local/Android/emulator"
     
     - name: Environment variables
       lineinfile:
@@ -465,6 +478,10 @@
         create: yes
       with_items:
         - { name: "EDITOR", value: "/usr/bin/gedit" }
+        - { name: "ANDROID_HOME", value: "$HOME/.local/Android" }
+        - { name: "ANDROID_NDK_HOME", value: "$HOME/.local/Android/ndk-bundle" }
+#        - { name: "JAVA_OPTIONS", value: "-Dawt.useSystemAAFontSettings=on -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee" }
+#        - { name: "JAVA_OPTS", value: "-Dawt.useSystemAAFontSettings=on -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee" }
     
     - name: sudo on Wayland
       copy:
