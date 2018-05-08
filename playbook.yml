@@ -4,6 +4,17 @@
 
   vars:
     firefox:
+
+#      <profile>/chrome/userChrome.css
+#
+#      @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+#      #TabsToolbar {
+#          visibility: collapse !important;
+#      }
+#      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+#        display: none;
+#      }
+
       addons:
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/https-everywhere
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin
