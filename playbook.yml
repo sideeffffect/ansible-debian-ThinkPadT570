@@ -64,6 +64,7 @@
       - deluge-gtk
       - dnsutils
       - docker-ce
+      - dotnet-sdk-2.1.4    # .NET core
       - empathy
       - fasd
       - ffmpeg
@@ -80,6 +81,7 @@
       - fsharp
       - gconf2
       - genisoimage
+      - gettext             # .NET core
       - git
       - gitg
       - glances
@@ -157,6 +159,8 @@
       - repo: deb https://dl.google.com/linux/chrome/deb/ stable main
         key: "https://dl.google.com/linux/linux_signing_key.pub"
       - repo: deb http://packages.microsoft.com/repos/vscode stable main
+        key: "https://packages.microsoft.com/keys/microsoft.asc"
+      - repo: deb https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main
         key: "https://packages.microsoft.com/keys/microsoft.asc"
       - repo: deb https://download.docker.com/linux/debian stretch stable
         key: "https://download.docker.com/linux/debian/gpg"
