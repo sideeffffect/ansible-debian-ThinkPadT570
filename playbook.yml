@@ -51,14 +51,15 @@
         - name: widget.chrome.allow-gtk-dark-theme
           value: true
       styles:
+#        - https://userstyles.org/styles/141833/userstyles-dark-2017
 #        - https://userstyles.org/styles/133890/dark-hackernews
-#        - https://userstyles.org/styles/118959/darksearch-for-google
+#        - https://userstyles.org/styles/144028/google-clean-dark
 #        - https://userstyles.org/styles/37035/github-dark
 #        - https://userstyles.org/styles/108591/github-wide
 #        - https://userstyles.org/styles/122072/wikipedia-minimalistic-dark-material-design
 #        - https://userstyles.org/styles/25811/amo-dark-theme
 #        - https://userstyles.org/styles/35345/stackoverflow-dark
-#        - https://userstyles.org/styles/120595/gmail-dark-1
+#        - https://userstyles.org/styles/155141/dark-gmail-2018-by-dm
     
     packages_add:
       - acroread:i386
