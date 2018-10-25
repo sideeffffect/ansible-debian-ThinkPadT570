@@ -19,7 +19,7 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/https-everywhere
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab
-#        - url: https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/remove-google-redirections/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/stylish
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gesturefy
@@ -37,7 +37,7 @@
         - name: dom.ipc.processCount
           value: 99
         - name: dom.ipc.processCount.extension
-          value: 99
+          value: 1
         - name: dom.ipc.processCount.file
           value: 99
         - name: dom.ipc.processCount.webLargeAllocation
