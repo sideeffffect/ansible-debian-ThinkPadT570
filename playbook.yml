@@ -260,23 +260,14 @@
     
     - name: Fonts -- Fira Code -- download
       get_url:
-        url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/{{ item }}/complete/Fura%20Code%20{{ item }}%20Nerd%20Font%20Complete%20Mono.ttf'
-        dest: '~/.local/share/fonts/Fura Code {{ item }} Nerd Font Complete Mono.ttf'
+        url: 'https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-{{ item }}.ttf'
+        dest: '~/.local/share/fonts/FiraCode-{{ item }}.ttf'
       with_items:
         - Bold
         - Light
         - Medium
         - Regular
         - Retina
-    
-    - name: Fonts -- Fira Mono -- download
-      get_url:
-        url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/{{ item }}/complete/Fura%20Mono%20{{ item }}%20Nerd%20Font%20Complete%20Mono.otf'
-        dest: '~/.local/share/fonts/Fura Mono {{ item }} Nerd Font Complete Mono.otf'
-      with_items:
-        - Bold
-        - Medium
-        - Regular
     
     - name: gconf
       gconftool2:
@@ -305,7 +296,7 @@
         - org.gnome.desktop.interface clock-show-seconds true
         - org.gnome.desktop.interface document-font-name 'DejaVu Sans 12'
         - org.gnome.desktop.interface font-name 'DejaVu Sans 12'
-        - org.gnome.desktop.interface monospace-font-name 'FuraCode Nerd Font Mono Light 12'
+        - org.gnome.desktop.interface monospace-font-name 'Fira Code Light 12'
         - org.gnome.desktop.wm.preferences titlebar-font 'DejaVu Sans Bold 12'
         
         - org.gnome.gedit.preferences.editor auto-indent true
