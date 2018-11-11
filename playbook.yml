@@ -399,7 +399,7 @@
       pip:
         name: youtube-dl
         state: latest
-        executable: pip3
+        executable: pip
     
     - name: Autostart applications -- global
       copy:
