@@ -387,17 +387,40 @@
       with_items:
         - "*~"
     
-    - name: Scala -- sbt plugins
-      lineinfile:
-        dest: "~/.sbt/{{ item.sbtVersion }}/plugins/plugins.sbt"
-        regexp: 'addSbtPlugin\("{{ item.org }}" % "{{ item.name }}" % "'
-        line: 'addSbtPlugin("{{ item.org }}" % "{{ item.name }}" % "{{ item.version }}")'
-        create: yes
-      with_items:
-        - { org: "org.duhemm", name: "sbt-errors-summary", version: "0.6.3", sbtVersion: "1.0" }
-        - { org: "org.duhemm", name: "sbt-errors-summary", version: "0.6.0", sbtVersion: "0.13" }
-        - { org: "com.softwaremill.clippy", name: "plugin-sbt", version: "0.5.3", sbtVersion: "1.0" }
-        - { org: "com.softwaremill.clippy", name: "plugin-sbt", version: "0.5.3", sbtVersion: "0.13" }
+    - name: Scala -- sbt 0.13 plugins
+      copy:
+        content: |
+          addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.0")
+          addSbtPlugin("com.softwaremill.clippy" % "plugin-sbt" % "0.5.3")
+          addCompilerPlugin("io.tryp" % "splain" % "0.3.4" cross CrossVersion.patch)
+        dest: ~/.sbt/0.13/plugins/plugins.sbt
+    
+    - name: Scala -- sbt 0.13 configuration
+      copy:
+        content: |
+          clippyColorsEnabled := true
+        dest: "~/.sbt/0.13/build.sbt"
+    
+    - name: Scala -- sbt 1.0 plugins
+      copy:
+        content: |
+          addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.3")
+          addSbtPlugin("com.softwaremill.clippy" % "plugin-sbt" % "0.5.3")
+          addCompilerPlugin("io.tryp" % "splain" % "0.3.4" cross CrossVersion.patch)
+        dest: ~/.sbt/1.0/plugins/plugins.sbt
+    
+    - name: Scala -- sbt 1.0 configuration
+      copy:
+        content: |
+          clippyColorsEnabled := true
+        dest: "~/.sbt/1.0/build.sbt"
+    
+    - name: Vim -- no visual
+      copy:
+        content: |
+          set mouse-=a
+          syntax on
+        dest: ~/.vimrc
     
     - name: dpath -- install with pip (Python) # to enable json module (from jpnewman.json)
       become: yes
