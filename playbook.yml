@@ -387,6 +387,18 @@
       with_items:
         - "*~"
     
+    - name: Scala -- sbt plugins
+      lineinfile:
+        dest: "~/.sbt/{{ item.sbtVersion }}/plugins/plugins.sbt"
+        regexp: 'addSbtPlugin\("{{ item.org }}" % "{{ item.name }}" % "'
+        line: 'addSbtPlugin("{{ item.org }}" % "{{ item.name }}" % "{{ item.version }}")'
+        create: yes
+      with_items:
+        - { org: "org.duhemm", name: "sbt-errors-summary", version: "0.6.3", sbtVersion: "1.0" }
+        - { org: "org.duhemm", name: "sbt-errors-summary", version: "0.6.0", sbtVersion: "0.13" }
+        - { org: "com.softwaremill.clippy", name: "plugin-sbt", version: "0.5.3", sbtVersion: "1.0" }
+        - { org: "com.softwaremill.clippy", name: "plugin-sbt", version: "0.5.3", sbtVersion: "0.13" }
+    
     - name: dpath -- install with pip (Python) # to enable json module (from jpnewman.json)
       become: yes
       pip:
