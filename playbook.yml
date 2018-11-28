@@ -168,13 +168,13 @@
       - repo: deb-src http://deb.debian.org/debian testing-updates main contrib non-free
       - repo: deb-src http://security.debian.org/ testing/updates main contrib non-free
       - repo: deb http://www.deb-multimedia.org testing main non-free
-        key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
+        key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
       - repo: deb-src http://www.deb-multimedia.org testing main non-free
-        key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
+        key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
       - repo: deb http://download.mono-project.com/repo/debian wheezy main
-        key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+        key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
       - repo: deb https://dl.bintray.com/sbt/debian /
-        key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823"
+        key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823"
       - repo: deb https://dl.google.com/linux/chrome/deb/ stable main
         key: "https://dl.google.com/linux/linux_signing_key.pub"
       - repo: deb http://packages.microsoft.com/repos/vscode stable main
