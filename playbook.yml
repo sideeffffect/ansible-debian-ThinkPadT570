@@ -20,11 +20,12 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/remove-google-redirections/
-#        - url: https://addons.mozilla.org/en-US/firefox/addon/stylish
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/styl-us/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gesturefy
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-download-notifications
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/torrentz2-magnet-links
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/
       prefs:
         - name: toolkit.cosmeticAnimations.enabled
           value: false
@@ -54,11 +55,11 @@
 #        - https://userstyles.org/styles/141833/userstyles-dark-2017
 #        - https://userstyles.org/styles/133890/dark-hackernews
 #        - https://userstyles.org/styles/144028/google-clean-dark
-#        - https://userstyles.org/styles/37035/github-dark
+#        - https://github.com/StylishThemes/GitHub-Dark/raw/master/github-dark.user.css
 #        - https://userstyles.org/styles/108591/github-wide
-#        - https://userstyles.org/styles/122072/wikipedia-minimalistic-dark-material-design
-#        - https://userstyles.org/styles/25811/amo-dark-theme
-#        - https://userstyles.org/styles/35345/stackoverflow-dark
+#        - https://github.com/StylishThemes/Wikipedia-Dark/raw/master/wikipedia-dark.user.css
+#        - https://userstyles.org/styles/159780/dark-mozilla-add-ons-amo
+#        - https://github.com/StylishThemes/StackOverflow-Dark/raw/master/stackoverflow-dark.user.css
 #        - https://userstyles.org/styles/155141/dark-gmail-2018-by-dm
     
     packages_add:
