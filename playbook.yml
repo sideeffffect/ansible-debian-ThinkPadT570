@@ -94,6 +94,7 @@
       - fluid-soundfont-gs
       - fonts-noto
       - fsharp
+      - fwupd-amd64-signed
       - gconf2
       - genisoimage
       - gettext             # .NET core
@@ -107,6 +108,7 @@
       - gnome-themes-extra:i386
       - gnome-tweak-tool
       - google-chrome-stable
+      - grub-efi-amd64-signed
       - gstreamer1.0-packagekit
       - gstreamer1.0-vaapi
       - gtk2-engines-murrine
@@ -145,6 +147,7 @@
       - python3-pip
       - qemu-kvm
       - sbt
+      - shim-signed
       - shntool
       - signal-desktop
       - snapper
