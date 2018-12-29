@@ -421,6 +421,22 @@
           reporterConfig := reporterConfig.value.withShortenPaths(false)
         dest: "~/.sbt/1.0/build.sbt"
     
+    - name: Ammonite-Shell -- directory
+      file:
+        path: '~/.ammonite'
+        state: directory
+    
+    - name: Ammonite-Shell -- config
+      get_url:
+        url: https://git.io/vHaKQ
+        dest: '~/.ammonite/predef.sc'
+    
+    - name: Ammonite-Shell -- executable
+      get_url:
+        url: https://github.com/lihaoyi/Ammonite/releases/download/1.6.0/2.12-1.6.0
+        dest: '~/.local/bin/amm'
+        mode: u+x
+    
     - name: Vim -- no visual
       copy:
         content: |
