@@ -78,7 +78,7 @@
       - deluge-console
       - deluge-gtk
       - dnsutils
-      - docker-ce
+      - docker.io
       - dotnet-sdk-2.1.4    # .NET core
       - empathy
       - fasd
@@ -185,8 +185,6 @@
         key: "https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg"
       - repo: deb https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main
         key: "https://packages.microsoft.com/keys/microsoft.asc"
-      - repo: deb https://download.docker.com/linux/debian stretch stable
-        key: "https://download.docker.com/linux/debian/gpg"
       - repo: deb https://updates.signal.org/desktop/apt xenial main
         key: "https://updates.signal.org/desktop/apt/keys.asc"
   
