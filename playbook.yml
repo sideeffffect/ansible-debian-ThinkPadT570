@@ -19,13 +19,17 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/https-everywhere
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/ublock-origin
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab
-#        - url: https://addons.mozilla.org/en-US/firefox/addon/remove-google-redirections/
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/remove-google-redirections
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/styl-us/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/hnes
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gesturefy
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-download-notifications
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/torrentz2-magnet-links
-#        - url: https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/violentmonkey
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/json-lite
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/pretty-xml
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/search_by_image
       prefs:
         - name: toolkit.cosmeticAnimations.enabled
           value: false
