@@ -83,7 +83,7 @@
       - deluge-gtk
       - dnsutils
       - docker.io
-      - dotnet-sdk-2.1.4    # .NET core
+#      - dotnet-sdk-2.1.4    # .NET core
       - empathy
       - fasd
       - ffmpeg
@@ -101,7 +101,7 @@
       - fwupd-amd64-signed
       - gconf2
       - genisoimage
-      - gettext             # .NET core
+#      - gettext             # .NET core
       - git
       - gitg
       - glances
@@ -127,11 +127,11 @@
       - libcanberra-gtk-module
       - libcanberra-gtk-module:i386
       - libjson-perl        #ctstream
-      - liblttng-ust0       # .NET core
+#      - liblttng-ust0       # .NET core
       - libpam-fprintd
       - libreoffice-help-cs
       - libreoffice-l10n-cs
-      - libunwind8          # .NET core
+#      - libunwind8          # .NET core
       - libxml-xpath-perl   #ctstream
       - libxml2-utils
       - liferea
