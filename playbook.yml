@@ -30,6 +30,8 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/json-lite
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/pretty-xml
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/search_by_image
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/fix-dark-theme-input-boxes
       prefs:
         - name: toolkit.cosmeticAnimations.enabled
           value: false
@@ -74,6 +76,7 @@
       - aspell-cs
       - bash-completion
       - vscodium                # Visual Studio Code
+      - chrome-gnome-shell
       - curl
       - dconf-editor
       - deb-multimedia-keyring
