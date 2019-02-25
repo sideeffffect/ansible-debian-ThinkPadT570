@@ -72,6 +72,7 @@
       - acroread:i386
       - acroread-plugins:i386
       - ansible
+      - apt-config-icons-large-hidpi
       - aptitude
       - aspell-cs
       - bash-completion
@@ -102,6 +103,7 @@
       - fonts-noto
       - fsharp
       - fwupd-amd64-signed
+      - fwupdate-amd64-signed
       - gconf2
       - genisoimage
 #      - gettext             # .NET core
