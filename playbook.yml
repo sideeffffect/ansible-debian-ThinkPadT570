@@ -548,7 +548,7 @@
         dest: ~/.config/fish/conf.d/variables.fish
         create: yes
       with_items:
-        - { name: "EDITOR", value: "/usr/bin/gedit" }
+        - { name: "EDITOR", value: "/usr/bin/vim" }
         - { name: "ANDROID_HOME", value: "$HOME/.local/Android" }
         - { name: "ANDROID_NDK_HOME", value: "$HOME/.local/Android/ndk-bundle" }
 #        - { name: "JAVA_OPTIONS", value: "-Dawt.useSystemAAFontSettings=on -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee" }
