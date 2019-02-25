@@ -610,7 +610,7 @@
     
     - name: Plymouth -- set theme
       become: yes
-      command: plymouth-set-default-theme -R softwaves
+      command: plymouth-set-default-theme -R futureprototype
       when: kernelmodulesintelagp.changed or kernelmodulesdrm.changed or kernelmodulesi915.changed
     
     - name: GRUB -- update
