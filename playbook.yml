@@ -91,6 +91,7 @@
       - deluge-gtk
       - dnsutils
       - docker.io
+      - docker-compose
 #      - dotnet-sdk-2.1.4    # .NET core
       - empathy
       - fasd
