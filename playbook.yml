@@ -149,6 +149,7 @@
       - mono-complete
       - mtr-tiny
       - mythes-cs
+      - network-manager-openconnect-gnome
       - network-manager-openvpn-gnome
       - npm                 # F# fable
       - openjdk-8-jdk
