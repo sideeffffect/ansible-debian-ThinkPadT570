@@ -136,11 +136,14 @@
       - libatk-adaptor:i386
       - libcanberra-gtk-module
       - libcanberra-gtk-module:i386
+      - libgmp-dev          # Haskell/GHC/Stack
+      - libicu-dev          # Haskell/GHC/Stack
       - libjson-perl        #ctstream
 #      - liblttng-ust0       # .NET core
       - libpam-fprintd
       - libreoffice-help-cs
       - libreoffice-l10n-cs
+      - libtinfo-dev        # Haskell/GHC/Stack
 #      - libunwind8          # .NET core
       - libxml-xpath-perl   #ctstream
       - libxml2-utils
@@ -179,6 +182,7 @@
       - visualvm
       - vlc
       - xinput
+      - zlib1g-dev          # Haskell/GHC/Stack
     packages_repos:
       - repo: deb http://deb.debian.org/debian testing main contrib non-free
       - repo: deb http://deb.debian.org/debian testing-updates main contrib non-free
