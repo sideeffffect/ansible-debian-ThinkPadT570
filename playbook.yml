@@ -403,6 +403,8 @@
         create: yes
       with_items:
         - "*~"
+        - ".metals"
+        - ".bloop"
     
     - name: Scala -- sbt 0.13 plugins
       copy:
