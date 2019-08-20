@@ -31,7 +31,7 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/pretty-xml
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/search_by_image
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration
-#        - url: https://addons.mozilla.org/en-US/firefox/addon/fix-dark-theme-input-boxes
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/select-after-closing-current/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/google-unlocked
       prefs:
         - name: toolkit.cosmeticAnimations.enabled
