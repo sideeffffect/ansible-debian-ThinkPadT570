@@ -33,6 +33,7 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/select-after-closing-current/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/google-unlocked
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/clickbait-remover-for-youtube/
       prefs:
         - name: toolkit.cosmeticAnimations.enabled
           value: false
