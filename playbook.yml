@@ -46,7 +46,7 @@
         - name: dom.ipc.processCount
           value: 99
         - name: dom.ipc.processCount.extension
-          value: 1
+          value: 99
         - name: dom.ipc.processCount.file
           value: 99
         - name: dom.ipc.processCount.webLargeAllocation
