@@ -105,7 +105,6 @@
       - fonts-noto
       - fsharp
       - fwupd-amd64-signed
-      - fwupdate-amd64-signed
       - gconf2
       - genisoimage
 #      - gettext             # .NET core
