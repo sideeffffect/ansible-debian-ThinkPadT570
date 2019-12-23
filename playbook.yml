@@ -176,6 +176,7 @@
       - unrar
       - vim-nox
       - virt-manager
+      - virtualbox-6.0
       - visualvm
       - vlc
       - xinput
@@ -204,6 +205,8 @@
 #        key: "https://packages.microsoft.com/keys/microsoft.asc"
       - repo: deb https://updates.signal.org/desktop/apt xenial main
         key: "https://updates.signal.org/desktop/apt/keys.asc"
+      - repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib
+        key: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
   
   pre_tasks:
     - name: Debian repos -- supress unstable packages except Firefox
