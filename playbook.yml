@@ -77,7 +77,7 @@
       - aptitude
       - aspell-cs
       - bash-completion
-      - vscodium                # Visual Studio Code
+      - codium                  # Visual Studio Code
       - chrome-gnome-shell
       - curl
       - dconf-editor
@@ -477,6 +477,11 @@
               "editor.fontLigatures": true,
               "editor.fontSize": 16,
               "editor.renderWhitespace": "all",
+              "files.autoSave": "afterDelay",
+              "git.autofetch": true,
+              "metals.javaHome": "/usr/lib/jvm/default-java",
+              "languageServerHaskell.useCustomHieWrapper": true,
+              "languageServerHaskell.useCustomHieWrapperPath": "hie-wrapper",
           }
         dest: ~/.config/VSCodium/User/settings.json
     
