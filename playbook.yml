@@ -421,9 +421,6 @@
     - name: Scala -- sbt 0.13 configuration
       copy:
         content: |
-#          import com.softwaremill.clippy.ClippySbtPlugin._ // needed in global configuration only
-#          clippyColorsEnabled := true
-#          reporterConfig := reporterConfig.value.withShortenPaths(false)
           addCompilerPlugin("io.tryp" % "splain" % "0.4.1" cross CrossVersion.patch)
           addCompilerPlugin("com.github.cb372" % "scala-typed-holes" % "0.1.1" cross CrossVersion.full)
           scalacOptions += "-P:typed-holes:log-level:info"
@@ -439,8 +436,6 @@
     - name: Scala -- sbt 1.0 configuration
       copy:
         content: |
-#          clippyColorsEnabled := true
-#          reporterConfig := reporterConfig.value.withShortenPaths(false)
           addCompilerPlugin("io.tryp" % "splain" % "0.4.1" cross CrossVersion.patch)
           addCompilerPlugin("com.github.cb372" % "scala-typed-holes" % "0.1.1" cross CrossVersion.full)
           scalacOptions += "-P:typed-holes:log-level:info"
