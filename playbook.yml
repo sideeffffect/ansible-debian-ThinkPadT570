@@ -77,6 +77,7 @@
       - aptitude
       - aspell-cs
       - bash-completion
+      - clang                   # Scala Native
       - codium                  # Visual Studio Code
       - chrome-gnome-shell
       - curl
@@ -132,6 +133,7 @@
       - libatk-adaptor:i386
       - libcanberra-gtk-module
       - libcanberra-gtk-module:i386
+      - libgc-dev           # Scala Native
       - libgmp-dev          # Haskell/GHC/Stack
       - libicu-dev          # Haskell/GHC/Stack
       - libjson-perl        #ctstream
