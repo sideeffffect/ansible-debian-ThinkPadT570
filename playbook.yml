@@ -217,6 +217,10 @@
           Pin: release a=unstable
           Pin-Priority: 600
           
+          Package: libnss3*
+          Pin: release a=unstable
+          Pin-Priority: 600
+          
           Package: *
           Pin: release a=unstable
           Pin-Priority: 50
