@@ -223,6 +223,10 @@
           Pin: release a=unstable
           Pin-Priority: 600
           
+          Package: libnspr4*
+          Pin: release a=unstable
+          Pin-Priority: 600
+          
           Package: *
           Pin: release a=unstable
           Pin-Priority: 50
