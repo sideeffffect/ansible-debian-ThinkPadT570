@@ -420,6 +420,7 @@
         - "*~"
         - ".metals"
         - ".bloop"
+        - "project/metals.sbt"
     
     - name: Scala -- sbt 0.13 plugins
       copy:
