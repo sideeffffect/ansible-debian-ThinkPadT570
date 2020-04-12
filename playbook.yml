@@ -109,7 +109,7 @@
       - flatpak
       - fluid-soundfont-gs
       - fonts-noto
-      - fsharp
+#      - fsharp
       - fwupd-amd64-signed
       - gconf2
       - genisoimage
@@ -152,13 +152,13 @@
       - libxml2-utils
       - liferea
       - mesa-utils
-      - mono-complete
+#      - mono-complete
       - mtr-tiny
       - mythes-cs
       - network-manager-openconnect-gnome
       - network-manager-openvpn-gnome
       - network-manager-ssh-gnome
-      - npm                 # F# fable
+#      - npm                 # F# fable
       - openjdk-8-jdk
       - openjfx
       - picard
@@ -200,8 +200,8 @@
         key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
       - repo: deb-src http://www.deb-multimedia.org testing main non-free
         key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA401FF99368FA1F98152DE755C808C2B65558117"
-      - repo: deb http://download.mono-project.com/repo/debian wheezy main
-        key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+#      - repo: deb http://download.mono-project.com/repo/debian wheezy main
+#        key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
       - repo: deb https://dl.bintray.com/sbt/debian /
         key: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823"
       - repo: deb https://dl.google.com/linux/chrome/deb/ stable main
