@@ -34,6 +34,7 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/select-after-closing-current/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/google-unlocked
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/clickbait-remover-for-youtube/
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/enhanced-h264ify/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/google-container/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/twitter-container/
@@ -63,6 +64,36 @@
         - name: lightweightThemes.selectedThemeID
           value: firefox-compact-dark@mozilla.org
         - name: widget.chrome.allow-gtk-dark-theme
+          value: true
+# HW decoding experiment
+# https://mastransky.wordpress.com/2020/03/03/webgl-and-fgx-acceleration-on-wayland/
+# https://mastransky.wordpress.com/2020/06/03/firefox-on-fedora-finally-gets-va-api-on-wayland/
+# MOZ_LOG="PlatformDecoderModule:5" MOZ_ENABLE_WAYLAND=1 firefox
+        - name: dom.webgpu.enabled
+          value: true
+        - name: gfx.webrender.all
+          value: true
+        - name: gfx.webrender.compositor.force-enabled
+          value: true
+        - name: gfx.webrender.enabled
+          value: true
+        - name: layers.acceleration.force-enabled
+          value: true
+        - name: layers.force-active
+          value: true
+        - name: media.ffvpx.enabled
+          value: false
+        - name: media.hardware-video-decoding.force-enabled
+          value: true
+        - name: webgl.force-enabled
+          value: true
+        - name: widget.wayland-dmabuf-vaapi.enabled
+          value: true
+        - name: widget.wayland-dmabuf-webgl.enabled
+          value: true
+        - name: widget.wayland-smooth-rendering
+          value: true
+        - name: widget.wayland_vsync.enabled
           value: true
       styles:
 #        - https://userstyles.org/styles/141833/userstyles-dark-2017
