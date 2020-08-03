@@ -105,7 +105,6 @@
 #        - https://github.com/StylishThemes/Wikipedia-Dark/raw/master/wikipedia-dark.user.css
 #        - https://userstyles.org/styles/159780/dark-mozilla-add-ons-amo
 #        - https://github.com/StylishThemes/StackOverflow-Dark/raw/master/stackoverflow-dark.user.css
-#        - https://userstyles.org/styles/155141/dark-gmail-2018-by-dm
     
     packages_add:
       - acroread:i386
