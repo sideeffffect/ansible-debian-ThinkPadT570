@@ -32,7 +32,7 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/search_by_image
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/select-after-closing-current/
-#        - url: https://addons.mozilla.org/en-US/firefox/addon/google-unlocked
+#        - url: https://github.com/Ibit-to/google-unlocked/releases/download/v1.5/google_unlocked-1.5.xpi
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/clickbait-remover-for-youtube/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/enhanced-h264ify/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/neutral-reddit-masstagger
@@ -43,6 +43,9 @@
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/twitter-container/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/contain-amazon/
 #        - url: https://addons.mozilla.org/en-US/firefox/addon/contain-reddit/
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/notifier-for-github/
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/refined-github-/
+#        - url: https://addons.mozilla.org/en-US/firefox/addon/github-file-icon/
       prefs:
         - name: toolkit.cosmeticAnimations.enabled
           value: false
@@ -459,7 +462,7 @@
         - "*~"
         - ".metals"
         - ".bloop"
-        - "project/metals.sbt"
+        - "metals.sbt"
     
     - name: Scala -- sbt 1.0 plugins
       copy:
