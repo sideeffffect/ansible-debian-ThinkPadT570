@@ -154,6 +154,7 @@
 #      - gettext             # .NET core
       - git
       - gitg
+      - gitless
       - glances
       - gnome-shell-extension-move-clock
       - gnome-shell-extension-system-monitor
