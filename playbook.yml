@@ -115,6 +115,7 @@
     packages_add:
       - acroread:i386
       - acroread-plugins:i386
+      - adoptopenjdk-11-hotspot
       - ansible
       - aptitude
       - aspell-cs
@@ -188,6 +189,7 @@
       - libxml-xpath-perl   #ctstream
       - libxml2-utils
       - liferea
+      - locate
       - mesa-utils
 #      - mono-complete
       - mtr-tiny
@@ -251,6 +253,8 @@
         key: "https://updates.signal.org/desktop/apt/keys.asc"
       - repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib
         key: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+      - repo: deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ buster main
+        key: "https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public"
   
   pre_tasks:
     - name: Debian repos -- supress unstable packages except Firefox
@@ -607,8 +611,8 @@
         - { name: "EDITOR", value: "/usr/bin/vim" }
         - { name: "ANDROID_HOME", value: "$HOME/.local/Android" }
         - { name: "ANDROID_NDK_HOME", value: "$HOME/.local/Android/ndk-bundle" }
-        - { name: "JAVA_OPTIONS", value: "-Dawt.useSystemAAFontSettings=lcd -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee" } # "-XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=30"
-        - { name: "JAVA_OPTS"   , value: "-Dawt.useSystemAAFontSettings=lcd -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee" } # "-XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=30"
+        - { name: "JAVA_TOOL_OPTIONS", value: "-Dawt.useSystemAAFontSettings=lcd -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee -XX:+PrintCommandLineFlags -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=compact -XX:+UnlockExperimentalVMOptions -XX:MaxInlineLevel=24" } # "-XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=30"
+
     
     - name: sudo on Wayland
       copy:
