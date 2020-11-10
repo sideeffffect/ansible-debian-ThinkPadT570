@@ -617,7 +617,7 @@
         - { name: "EDITOR", value: "/usr/bin/vim" }
         - { name: "ANDROID_HOME", value: "$HOME/.local/Android" }
         - { name: "ANDROID_NDK_HOME", value: "$HOME/.local/Android/ndk-bundle" }
-        - { name: "JAVA_TOOL_OPTIONS", value: "-Dawt.useSystemAAFontSettings=lcd -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee -XX:+PrintCommandLineFlags -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=compact -XX:+UnlockExperimentalVMOptions -XX:MaxInlineLevel=24" } # "-XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=30"
+        - { name: "JDK_JAVA_OPTIONS", value: "-Dawt.useSystemAAFontSettings=lcd -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee -XX:+PrintCommandLineFlags -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=compact -XX:+UnlockExperimentalVMOptions -XX:MaxInlineLevel=24" } # "-XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=30"
 
     
     - name: sudo on Wayland
