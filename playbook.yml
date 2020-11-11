@@ -691,7 +691,13 @@
       package:
         name: firefox-esr
         state: absent
-  
+    
+    - name: Java -- AdoptOpenJDK 11
+      become: yes
+      alternatives:
+        name: java
+        path: /usr/lib/jvm/adoptopenjdk-11-hotspot-amd64/bin/java
+    
   roles:
     - name: zerotao.packages
       become: yes
