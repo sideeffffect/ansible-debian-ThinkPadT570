@@ -116,6 +116,8 @@
 #        - https://raw.githubusercontent.com/DM164/Dark-by-DM/master/google-drive.user.css
 #        - https://github.com/StylishThemes/StackOverflow-Dark/raw/master/stackoverflow-dark.user.css
 #        - https://raw.githubusercontent.com/StylishThemes/Feature-Override-Styles/master/stackoverflow-syntax-themes.user.css
+#      scripts:
+#        - https://github.com/Farow/userscripts/raw/master/reddit-highlight-new-comments.user.js
     
     packages_add:
       - acroread:i386
@@ -198,6 +200,7 @@
       - locate
       - mesa-utils
 #      - mono-complete
+      - mp3splt
       - mtr-tiny
       - mythes-cs
       - network-manager-openconnect-gnome
@@ -354,14 +357,13 @@
         - Regular
         - Retina
     
-    - name: gconf
-      gconftool2:
-        key: '{{ item.key }}'
-        value: '{{ item.value }}'
-        value_type: '{{ item.type }}'
-        state: present
-      with_items:
-        - { key: /apps/guake/keybindings/global/show_hide, value: "<Shift>space", type: string }
+#    - name: gconf
+#      gconftool2:
+#        key: '{{ item.key }}'
+#        value: '{{ item.value }}'
+#        value_type: '{{ item.type }}'
+#        state: present
+#      with_items:
 
     - name: gsettings
       command: gsettings set {{ item }}
@@ -415,6 +417,18 @@
         - org.gnome.shell.extensions.openweather wind-speed-unit 'm/s'
         
         - org.gtk.Settings.FileChooser sort-directories-first true
+        
+        - org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Toggle Guake'
+        - org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Shift>space'
+        - org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'guake -t'
+    
+    - name: gsettings -- with schema
+      command: gsettings --schemadir {{ item.schemaDir }} set {{ item.schema }} {{ item.key }} {{ item.value}}
+      with_items:
+        - { schemaDir: '/usr/share/guake/data/', schema: 'guake.keybindings.global', key: 'show-hide', value: '<Shift>space' }
+        - { schemaDir: '/usr/share/guake/data/', schema: 'guake.style', key: 'cursor-shape', value: 1 }
+        - { schemaDir: '/usr/share/guake/data/', schema: 'guake.general', key: 'infinite-history', value: 'true' }
+        - { schemaDir: '/usr/share/guake/data/', schema: 'guake.general', key: 'mouse-display', value: 'false' }
     
     - name: Fonts -- Xresources
       copy:
@@ -619,7 +633,7 @@
         - { name: "EDITOR", value: "/usr/bin/vim" }
         - { name: "ANDROID_HOME", value: "$HOME/.local/Android" }
         - { name: "ANDROID_NDK_HOME", value: "$HOME/.local/Android/ndk-bundle" }
-        - { name: "JDK_JAVA_OPTIONS", value: "-Dawt.useSystemAAFontSettings=lcd -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee -XX:+PrintCommandLineFlags -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=compact -XX:+UnlockExperimentalVMOptions -XX:MaxInlineLevel=24" } # "-XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=30"
+        - { name: "JDK_JAVA_OPTIONS", value: "-Dawt.useSystemAAFontSettings=lcd -XX:+IgnoreUnrecognizedVMOptions -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=compact -XX:+UnlockExperimentalVMOptions" }
 
     
     - name: sudo on Wayland
